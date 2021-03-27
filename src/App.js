@@ -174,6 +174,7 @@ class App extends Component {
             <p>~ {token}</p>
           ))}
         </div>
+        {/*
         <form onSubmit={(event) => {
           event.preventDefault()
           this.transfer(song_sc)
@@ -191,7 +192,8 @@ class App extends Component {
           <input id="newID" ref={this.state.formid} type="number" className="form-control" placeholder="ID" required />
           <input id="newDestination" ref={this.destination} type="text" className="form-control" placeholder="Destination address" required />
           <input type="submit" />
-        </form>
+      </form>
+      */}
         <p><br/>List of song token owners :</p>
         <div>
           {this.state.ownersOfSong.map(token => (
