@@ -92,7 +92,10 @@ class App extends Component {
   }
 
   transfer(contrat) {
-    contrat.methods.safeTransferFrom(this.state.account, this.state.destination, this.state.formid).call()
+    console.log(this.state.account)
+    console.log(this.state.destination)
+    console.log(this.state.formid)
+    contrat.methods.safeTransferFrom(this.state.account,this.state.destination,this.state.formid).send({from:this.state.account,to:this.state.destination,tokenId:this.state.formid})
     .once('receipt', (receipt) => {
       this.setState({ receipt })
     })
@@ -140,8 +143,14 @@ class App extends Component {
       ownersOfToudou: []
     }
     this.transfer = this.transfer.bind(this)
+    this.handleInputChange=this.handleInputChange.bind(this)
   }
-
+  handleInputChange(event) {
+    const target = event.target;    
+    console.log(target.value)
+    console.log(target.name)
+    this.setState({[target.name]: target.value})
+  }
   render() {
     return (
       <div className="container">
@@ -174,14 +183,14 @@ class App extends Component {
             <p>~ {token}</p>
           ))}
         </div>
-        {/*
+        
         <form onSubmit={(event) => {
           event.preventDefault()
           this.transfer(song_sc)
         }}>
           <p>Transfer song token :</p>
-          <input id="newID" ref={this.state.formid} type="number" className="form-control" placeholder="ID" required />
-          <input id="newDestination" ref={this.destination} type="text" className="form-control" placeholder="Destination address" required />
+          <input id="newID" ref={this.state.formid} name="formid" type="number" className="form-control" onChange={this.handleInputChange} placeholder="ID" required />
+          <input id="destination" ref={this.state.destination} name="destination" type="text" className="form-control" onChange={this.handleInputChange} placeholder="Destination address" required />
           <input type="submit" />
         </form>
         <form onSubmit={(event) => {
@@ -189,11 +198,11 @@ class App extends Component {
           this.transfer(toudou_sc)
         }}>
           <p>Transfer Tout Doucement token :</p>
-          <input id="newID" ref={this.state.formid} type="number" className="form-control" placeholder="ID" required />
-          <input id="newDestination" ref={this.destination} type="text" className="form-control" placeholder="Destination address" required />
+          <input id="newID" ref={this.state.formid} type="number" className="form-control" onChange={this.handleInputChange} placeholder="ID" required />
+          <input id="newDestination" ref={this.state.destination} type="text" className="form-control" onChange={this.handleInputChange} placeholder="Destination address" required />
           <input type="submit" />
       </form>
-      */}
+      
         <p><br/>List of song token owners :</p>
         <div>
           {this.state.ownersOfSong.map(token => (
