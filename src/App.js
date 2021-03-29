@@ -166,32 +166,35 @@ class App extends Component {
     return (
       <div className="container">
         <h1 style={{fontSize:'70px',marginLeft:'-10px'}}>Trop bien ce site</h1>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Your account: </div> <div style={elementStyle}>{this.state.account}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Chain id: </div><div style={elementStyle}>{this.state.chainID}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Last block:  </div><div style={elementStyle}>{this.state.lastBlock}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Number of tokens: </div> <div style={elementStyle}>{this.state.nftnumber}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Name of tokens:  </div><div style={elementStyle}>{this.state.nftname}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Name of the token:  </div><div style={elementStyle}>{this.state.tokenURI.name}</div></p>
-        <p style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Description of the tokens:  </div><div style={elementStyle}>{this.state.tokenURI.description}</div></p>
+        <p><div style={titleStyle}>Your account: </div> <div style={elementStyle}>{this.state.account}</div>
+        <div style={titleStyle}>Chain id: </div><div style={elementStyle}>{this.state.chainID}</div>
+        <div style={titleStyle}>Last block:  </div><div style={elementStyle}>{this.state.lastBlock}</div>
+        <div style={titleStyle}>Number of tokens: </div> <div style={elementStyle}>{this.state.nftnumber}</div>
+        <div style={titleStyle}>Name of tokens:  </div><div style={elementStyle}>{this.state.nftname}</div>
+        <div style={titleStyle}>Name of the token:  </div><div style={elementStyle}>{this.state.tokenURI.name}</div>
+        <div style={titleStyle}>Description of the tokens:  </div><div style={elementStyle}>{this.state.tokenURI.description}</div></p>
         <img src={this.state.tokenURI.img} alt="new" style={{width:'50%'}}/>
-        <button onClick={(event) => {
+        <div>
+        <button style={{borderRadius: 10, marginLeft:'20px',boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}} onClick={(event) => {
           event.preventDefault()
           song_sc.methods.claimAToken().send({ from: this.state.account })
         }}>Claim new token</button>
-        <button onClick={(event) => {
+        <button style={{borderRadius: 10, marginLeft:'20px',boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}} onClick={(event) => {
           event.preventDefault()
           toudou_sc.methods.buyAToken().send({ from: this.state.account, value: 2*10**17 })
         }}>Buy a new tout doucement token</button>
-        <p><div style={titleStyle,{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}>You have </div><div style={{textDecorationLine: 'underline'}}> {this.state.nbOwnedSong} song token with those IDs : </div> </p>
+        </div>
+        
+        <p><div style={titleStyle}>You have </div><div style={{fontWeight:'bold'}}> {this.state.nbOwnedSong} song token with those IDs : </div> </p>
         <div>
           {this.state.ownedSong.map(token => (
-            <p>~ {token}</p>
+            <p>- {token}</p>
           ))}
         </div>
-        <p><div style={titleStyle,{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}>and </div><div style={{textDecorationLine: 'underline'}}>{this.state.nbOwnedToudou} tout doucement token with those IDs:</div></p>
+        <p><div style={titleStyle}>and </div><div style={{fontWeight: "bold",}}>{this.state.nbOwnedToudou} tout doucement token with those IDs:</div></p>
         <div>
           {this.state.ownedToudou.map(token => (
-            <p>~ {token}</p>
+            <p>- {token}</p>
           ))}
         </div>
         
@@ -199,7 +202,7 @@ class App extends Component {
           event.preventDefault()
           this.transfer(song_sc)
         }}>
-          <div style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}><div style={titleStyle}>Transfer song token :</div> 
+          <div><div style={titleStyle}>Transfer song token :</div> 
           <input id="newID" ref={this.state.formid} name="formid" type="number" className="form-control" onChange={this.handleInputChange} placeholder="ID" required />
           <input id="destination" ref={this.state.destination} name="destination" type="text" className="form-control" onChange={this.handleInputChange} placeholder="Destination address" required />
           <input type="submit" />
@@ -209,13 +212,12 @@ class App extends Component {
           event.preventDefault()
           this.transfer(toudou_sc)
         }}>
-          <div style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",marginLeft:'5px',
-      color: '#02859F',}}><div style={titleStyle}>Transfer Tout Doucement token :</div>
+          <div style = {{marginLeft:'5px', color: '#02859F',}}><div style={titleStyle}>Transfer Tout Doucement token :</div>
           <input id="newID" ref={this.state.formid} type="number" className="form-control" onChange={this.handleInputChange} placeholder="ID" required />
           <input id="newDestination" ref={this.state.destination} type="text" className="form-control" onChange={this.handleInputChange} placeholder="Destination address" required />
           <input type="submit" /></div>
       </form>
-        <div style = {{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",marginLeft:'10px'}}>
+        <div style = {{marginLeft:'10px'}}>
         <div style={titleStyle}> List of song token owners :</div>
         <div style={{marginLeft:'20px'}}>
           {this.state.ownersOfSong.map(token => (
@@ -223,7 +225,7 @@ class App extends Component {
           ))}
         </div>
         </div>
-        <div style={{borderRadius: 10,boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",marginLeft:'10px'}}>
+        <div style={{marginLeft:'10px'}}>
           <div style = {titleStyle}>List of Tout doucement token owners :</div>
           <div style={{marginLeft:'20px'}}>
             {this.state.ownersOfToudou.map(token => (
