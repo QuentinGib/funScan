@@ -1,3 +1,15 @@
+### Another address' informations
+To check the tokens owned by another wallet you just have to add =<address> in the url and all the informations displayed will be about the address in the url. If this address is false or not provided in the url it will use your metamask address
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
