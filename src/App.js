@@ -29,8 +29,7 @@ class App extends Component {
   }
 
   async loadBlockchainData() {
-    console.log(window.location.href.split("=")[1])
-    const accounts =  window.location.href.split("=")[1] || await web3.eth.getAccounts()
+    const accounts =  web3.utils.isAddress(window.location.href.split("=")[1])? window.location.href.split("=")[1] : (await web3.eth.getAccounts())[0]
     this.setState({ account: accounts })
     const chainID = await web3.eth.getChainId()
     this.setState({chainID})
