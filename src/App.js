@@ -164,7 +164,7 @@ class App extends Component {
      }
     return (
       <div className="container">
-        <h1 style={{fontSize:'70px',marginLeft:'-10px'}}>Trop bien ce site</h1>
+        <h1 style={{fontSize:'70px',marginLeft:'-10px'}}>FunScan</h1>
         <p><div style={titleStyle}>Your account: </div> <div style={elementStyle}>{this.state.account}</div>
         <div style={titleStyle}>Chain id: </div><div style={elementStyle}>{this.state.chainID}</div>
         <div style={titleStyle}>Last block:  </div><div style={elementStyle}>{this.state.lastBlock}</div>
