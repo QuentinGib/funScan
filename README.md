@@ -27,3 +27,5 @@ Vous avez également la possibilité de transférer un de vos token "Song for a 
 Enfin sont affichées les adresses des propriétaires de tokens des deux NFTs.
 
 En renseignant une adresse ethereum dans l'url du site (ex : `https://funscan.herokuapp.com/=0x8067c1F2E8ec7FD00C08Ff0FbedAF185cbd8ca0A`) il est également possible d'afficher toutes ces informations à propos de cette adresse.
+
+La requête pour récupérer les informations sur le token song for a city ne fonctionnera qu'après avoir cliqué sur le bouton sur ce lien https://funscan.herokuapp.com/ . Sur heroku l'image ne s'affiche pas mais en local tout fonctionne.
