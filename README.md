@@ -26,4 +26,4 @@ Vous avez également la possibilité de transférer un de vos token "Song for a 
 
 Enfin sont affichées les adresses des propriétaires de tokens des deux NFTs.
 
-En renseignant une adresse ethereum dans l'url du site (ex : `https://funscan.herokuapp.com/0x8067c1F2E8ec7FD00C08Ff0FbedAF185cbd8ca0A`) il est également possible d'afficher toutes ces informations à propos de cette adresse.
+En renseignant une adresse ethereum dans l'url du site (ex : `https://funscan.herokuapp.com/=0x8067c1F2E8ec7FD00C08Ff0FbedAF185cbd8ca0A`) il est également possible d'afficher toutes ces informations à propos de cette adresse.
